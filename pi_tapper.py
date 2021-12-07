@@ -1,24 +1,25 @@
-import ray
-
 import sys
+import multiprocessing
+from Additional_py_Files import pi_pull
+from Additional_py_Files import pi_push
+
 sys.path.append('Additional_py_Files/')
-import pi_db_connect as db
-import pi_pull
-import pi_push
 
-ray.init()
 
-@ray.remote
 def push():
-	sys.path.append('Additional_py_Files/')
-	import pi_push
-	pi_push.run()
+    sys.path.append('Additional_py_Files/')
+    pi_push.run()
 
-@ray.remote
+
 def pull():
-	sys.path.append('Additional_py_Files/')
-	import pi_pull
-	pi_pull.run()
+    sys.path.append('Additional_py_Files/')
+    pi_pull.run()
 
-ray.get([push.remote(), pull.remote()])
-	
+
+if __name__ == "main":
+    p1 = multiprocessing.Process(target=push)
+    p2 = multiprocessing.Process(target=pull)
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()
