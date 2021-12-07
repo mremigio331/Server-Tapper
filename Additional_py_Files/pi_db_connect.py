@@ -7,8 +7,8 @@ def grab_box_info():
     try:
         db = sqlite3.connect('Data/logs.db')
         df = pd.read_sql_query('SELECT * FROM Box_Info', db) 
-        return df
         print('Box Information successfully')
+        return df
     except:
         print('Failed to connect to the database')
 
@@ -17,8 +17,8 @@ def grab_ranges_info():
     try:
         db = sqlite3.connect('Data/logs.db')
         df = pd.read_sql_query('SELECT * FROM Ranges', db) 
-        return df
         print('Box Information successfully')
+        return df
     except:
         print('Failed to connect to the database')
 
