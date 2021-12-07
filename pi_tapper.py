@@ -16,10 +16,9 @@ def pull():
     pi_pull.run()
 
 
-if __name__ == "main":
-    p1 = multiprocessing.Process(target=push)
-    p2 = multiprocessing.Process(target=pull)
-    p1.start()
-    p2.start()
-    p1.join()
-    p2.join()
+p1 = multiprocessing.Process(target=push)
+p2 = multiprocessing.Process(target=pull)
+p1.start()
+p2.start()
+p1.join()
+p2.join()
