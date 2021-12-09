@@ -102,6 +102,7 @@ def push(starting_box):
 
 def main_push():
     boxes = box_info['User'].tolist()
+    print('Will be pushing to the following servers:')
     print(boxes)
     with Manager() as manager:
         with Pool() as pool:

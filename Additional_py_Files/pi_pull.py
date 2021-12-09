@@ -97,6 +97,7 @@ def pull(starting_box):
 
 def main_pull():
     boxes = box_info['User'].tolist()
+    print('Will be pulling to the following servers:')
     print(boxes)
     with Manager() as manager:
         with Pool() as pool:

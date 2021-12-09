@@ -3,21 +3,17 @@ import sqlite3
 import pandas as pd
 
 def grab_box_info():
-    print('Loading Box Information')
     try:
         db = sqlite3.connect('Data/logs.db')
         df = pd.read_sql_query('SELECT * FROM Box_Info', db) 
-        print('Box Information successfully')
         return df
     except:
         print('Failed to connect to the database')
 
 def grab_ranges_info():
-    print('Loading Ranges Information')
     try:
         db = sqlite3.connect('Data/logs.db')
         df = pd.read_sql_query('SELECT * FROM Ranges', db) 
-        print('Box Information successfully')
         return df
     except:
         print('Failed to connect to the database')
@@ -32,7 +28,6 @@ def log_add(row):
     try:
         c.close
         conn.close()
-        print('Database closed')
     except:
         print('Database not closed')
 
