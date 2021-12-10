@@ -3,7 +3,7 @@ import pandas as pd
 import pysftp
 
 global database
-database = 'Data/logs.db'
+database = 'Data/server_tap.db'
 
 def add_connecion():
     users_added = []

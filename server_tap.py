@@ -1,16 +1,17 @@
 import sys
 import multiprocessing
 from multiprocessing import Process, Pool, Manager, freeze_support
-from Additional_py_Files import pi_pull
-from Additional_py_Files import pi_push
-from Additional_py_Files import pi_db_connect as db
-sys.path.append('Additional_py_Files/')
+sys.path.append('py_Files/')
+from py_Files import pull
+from py_Files import push
+from py_Files import connect as db
 
-def push():
-    pi_push.run()
 
-def pull():
-    pi_pull.run()
+def s_push():
+    push.run()
+
+def s_pull():
+    pull.run()
 
 if ('-a' in  sys.argv) or ('-add' in  sys.argv):
     print('*** ADD CONNECTION ***')
@@ -46,7 +47,7 @@ if ('-i' in  sys.argv) or ('-iterations' in  sys.argv):
 
 if ('-l' in  sys.argv) or ('-pull' in  sys.argv):
     if __name__ == '__main__':
-        pi_pull.run()
+        s_pull()
 
 if ('-lf' in  sys.argv) or ('-pullf' in  sys.argv):
     print('*** CHANGE PULL FILE ***')
@@ -110,8 +111,8 @@ if ('-om' in sys.argv) or ('-messages' in sys.argv):
 if ('-r' in  sys.argv) or ('-run' in sys.argv):
     if __name__ == '__main__':
         freeze_support()
-        p1 = multiprocessing.Process(target=push)
-        p2 = multiprocessing.Process(target=pull)
+        p1 = multiprocessing.Process(target=s_push)
+        p2 = multiprocessing.Process(target=s_pull)
         p1.start()
         p2.start()
         p1.join()
@@ -119,7 +120,7 @@ if ('-r' in  sys.argv) or ('-run' in sys.argv):
 
 if ('-s' in  sys.argv) or ('-push' in  sys.argv):
     if __name__ == '__main__':
-        pi_push.run()
+        s_push()
 
 if ('-sf' in  sys.argv) or ('-pushf' in  sys.argv):
     print('*** CHANGE PUSH FILE ***')
