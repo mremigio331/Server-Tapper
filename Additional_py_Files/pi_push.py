@@ -90,9 +90,6 @@ def push(starting_box):
             done_mess = ('***' + box + ' DONE with a total of ' + str(iterations) + ' iterations***')
             print(done_mess)
             db.message_add(done_mess)
-            with open('Data/Logs_Backup.txt', 'a') as f:
-                for x in actions_list:
-                    f.write(x + '\n')
             return df  
         else:
             message = ('Next push on ' + box + ' will be in ' + str(sleep_time) + ' seconds. There are ' + str(iterations_left) + ' iterations left.')
